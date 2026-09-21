@@ -1,3 +1,32 @@
+## 📑 Table of Contents
+
+**Part 1: Python Full-Stack (FastAPI + React)**
+- [Purpose & Why This Project Was Created](#-purpose--why-this-project-was-created-python-stack)
+- [Monorepo Architecture & Directory Structure](#%EF%B8%8F-monorepo-architecture--directory-structure-python-stack)
+- [Technology Stack](#%EF%B8%8F-technology-stack-python-stack)
+- [5-Step End-to-End Autonomous Workflow](#-5-step-end-to-end-autonomous-workflow-python-stack)
+- [Quickstart Guide](#-quickstart-guide-python-stack)
+- [How to Deploy (Render & Vercel)](#-how-to-deploy-render--vercel-step-by-step)
+  - [Method A: Render + Vercel](#method-a-deploy-backend-on-render--frontend-on-vercel-recommended)
+  - [Method B: Render Blueprint](#method-b-1-click-deployment-on-render-blueprint)
+  - [Method C: Docker Compose](#method-c-local-docker-compose-1-command-deployment)
+- [Technical Interview Defense Q&A](#%EF%B8%8F-technical-interview-defense-qa-python-stack)
+
+**Part 2: Java Full-Stack (Spring Boot 3 + React)**
+- [Purpose & Why This Project Was Created](#-purpose--why-this-project-was-created-java-stack)
+- [Monorepo Architecture & Directory Structure](#%EF%B8%8F-monorepo-architecture--directory-structure-java-stack)
+- [Technology Stack](#%EF%B8%8F-technology-stack-java-stack)
+- [5-Step End-to-End Autonomous Workflow](#-5-step-end-to-end-autonomous-workflow-java-stack)
+- [Quickstart Guide](#-quickstart-guide-java-stack)
+- [Deployment Guide](#-deployment-guide-java-stack)
+- [Technical Interview Defense Q&A](#%EF%B8%8F-technical-interview-defense-qa-java-stack)
+
+**Other**
+- [License & Compliance](#-license--compliance)
+
+---
+
+
 # Autonomous Job Automation Agent (Indian Tech Ecosystem MVP)
 
 A production-grade full-stack solution for an **Autonomous Job Automation Agent** tailored specifically for candidate **Prasanthi** in the **Indian Tech Market** (Naukri, Instahyre, Cutshort, Hirist, Foundit, LinkedIn India, ₹ LPA compensation, 30-day notice periods, and Indian tech hubs).
