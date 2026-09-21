@@ -1,5 +1,15 @@
 ## 📑 Table of Contents
 
+# Autonomous Job Automation Agent (Indian Tech Ecosystem MVP)
+
+A production-grade full-stack solution for an **Autonomous Job Automation Agent** tailored specifically for candidate **Prasanthi** in the **Indian Tech Market** (Naukri, Instahyre, Cutshort, Hirist, Foundit, LinkedIn India, ₹ LPA compensation, 30-day notice periods, and Indian tech hubs).
+
+This repository includes complete architecture specifications, implementation workflows, quickstart guides, deployment instructions, and technical interview defense sections for **both Python Full-Stack (FastAPI + React)** and **Java Full-Stack (Spring Boot 3 + React)** implementations.
+
+---
+
+## 📑 Table of Contents
+
 **Part 1: Python Full-Stack (FastAPI + React)**
 - [Purpose & Why This Project Was Created](#-purpose--why-this-project-was-created-python-stack)
 - [Monorepo Architecture & Directory Structure](#%EF%B8%8F-monorepo-architecture--directory-structure-python-stack)
@@ -23,15 +33,6 @@
 
 **Other**
 - [License & Compliance](#-license--compliance)
-
----
-
-
-# Autonomous Job Automation Agent (Indian Tech Ecosystem MVP)
-
-A production-grade full-stack solution for an **Autonomous Job Automation Agent** tailored specifically for candidate **Prasanthi** in the **Indian Tech Market** (Naukri, Instahyre, Cutshort, Hirist, Foundit, LinkedIn India, ₹ LPA compensation, 30-day notice periods, and Indian tech hubs).
-
-This repository includes complete architecture specifications, implementation workflows, quickstart guides, deployment instructions, and technical interview defense sections for **both Python Full-Stack (FastAPI + React)** and **Java Full-Stack (Spring Boot 3 + React)** implementations.
 
 ---
 
