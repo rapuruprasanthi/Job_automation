@@ -1,10 +1,37 @@
-## 📑 Table of Contents
-
 # Autonomous Job Automation Agent (Indian Tech Ecosystem MVP)
 
 A production-grade full-stack solution for an **Autonomous Job Automation Agent** tailored specifically for candidate **Prasanthi** in the **Indian Tech Market** (Naukri, Instahyre, Cutshort, Hirist, Foundit, LinkedIn India, ₹ LPA compensation, 30-day notice periods, and Indian tech hubs).
 
-This repository includes complete architecture specifications, implementation workflows, quickstart guides, deployment instructions, and technical interview defense sections for **both Python Full-Stack (FastAPI + React)** and **Java Full-Stack (Spring Boot 3 + React)** implementations.
+This repository includes complete architecture specifications, implementation workflows, quickstart guides, live deployment instructions, and technical interview defense sections for **both Python Full-Stack (FastAPI + React)** and **Java Full-Stack (Spring Boot 3 + React)** implementations.
+
+---
+
+## 🚀 Live Production Deployment
+
+| Service | Technology | Live URL / Endpoint | Status |
+| :--- | :--- | :--- | :--- |
+| **Frontend Web App** | React 18 + Vite + TypeScript (Vercel) | [https://job-automation-wvia.vercel.app](https://job-automation-wvia.vercel.app) | 🟢 Live |
+| **Alternative Frontend URL** | React 18 + Vite + TypeScript (Vercel) | [https://job-automation-seven.vercel.app](https://job-automation-seven.vercel.app) | 🟢 Live |
+| **Backend API Server** | FastAPI + Python 3.11 (Render) | `https://job-automation-5-2txb.onrender.com` | 🟢 Live |
+| **API Base URL** | REST API v1 Endpoint | `https://job-automation-5-2txb.onrender.com/api/v1` | 🟢 Active |
+| **Interactive API Docs** | Swagger / OpenAPI UI | [https://job-automation-5-2txb.onrender.com/docs](https://job-automation-5-2txb.onrender.com/docs) | 🟢 Active |
+| **Backend Health Check** | FastAPI Health Monitor | [https://job-automation-5-2txb.onrender.com/health](https://job-automation-5-2txb.onrender.com/health) | 🟢 Online |
+
+---
+
+## 🛠️ Recent Deployment & Codebase Improvements
+
+1. **Zero-Config Frontend-to-Backend Binding**:
+   - `frontend/src/api/client.ts` was updated with `https://job-automation-5-2txb.onrender.com/api/v1` directly configured as the default fallback `API_BASE_URL`.
+   - **Impact**: No Vercel environment variable configuration or paid Vercel plan upgrade is required. The frontend automatically connects to the live backend out-of-the-box on all Vercel domains.
+
+2. **Dynamic Cross-Origin Resource Sharing (CORS)**:
+   - `backend/app/main.py` was updated with `allow_origin_regex=r"https://.*\.vercel\.app"` in `CORSMiddleware`.
+   - **Impact**: Any Vercel deployment URL (production, preview branch, or custom subdomains) can connect securely with JWT bearer tokens (`withCredentials: true`).
+
+3. **Python 3.11 Wheel Compatibility on Render**:
+   - Added `.python-version` locking the runtime to **Python 3.11.8** and updated `requirements.txt` to flexible version bounds (`pydantic>=2.7.0`, `fastapi>=0.110.0`).
+   - **Impact**: Prevents container build failures caused by missing binary wheels in Python 3.14 preview environments and avoids Rust compilation errors.
 
 ---
 
@@ -17,7 +44,7 @@ This repository includes complete architecture specifications, implementation wo
 - [5-Step End-to-End Autonomous Workflow](#-5-step-end-to-end-autonomous-workflow-python-stack)
 - [Quickstart Guide](#-quickstart-guide-python-stack)
 - [How to Deploy (Render & Vercel)](#-how-to-deploy-render--vercel-step-by-step)
-  - [Method A: Render + Vercel](#method-a-deploy-backend-on-render--frontend-on-vercel-recommended)
+  - [Method A: Render + Vercel (Recommended)](#method-a-deploy-backend-on-render--frontend-on-vercel-recommended)
   - [Method B: Render Blueprint](#method-b-1-click-deployment-on-render-blueprint)
   - [Method C: Docker Compose](#method-c-local-docker-compose-1-command-deployment)
 - [Technical Interview Defense Q&A](#%EF%B8%8F-technical-interview-defense-qa-python-stack)
@@ -55,6 +82,7 @@ This project solves these pain points by building an intelligent, privacy-first 
 
 ```
 job-automation-agent/
+├── .python-version                 # Forces Python 3.11.8 on Render builds
 ├── backend/                        # Python FastAPI Backend
 │   ├── app/
 │   │   ├── api/                    # REST API Routers (auth, profile, jobs, applications, outreach, etc.)
@@ -87,7 +115,7 @@ job-automation-agent/
 │   └── pytest.ini                  # Pytest configuration
 ├── frontend/                       # React 18 + Vite + TypeScript Frontend
 │   ├── src/
-│   │   ├── api/                    # Axios API service instances
+│   │   ├── api/                    # Axios API service instances (configured to Render URL)
 │   │   ├── components/             # Reusable UI components & Sidebar Layout
 │   │   ├── lib/                    # TypeScript interfaces & offline mock engine
 │   │   ├── pages/                  # 10 Full-Featured Dark Mode Pages
@@ -193,8 +221,6 @@ npm run dev
 
 ## 🌐 How to Deploy (Render & Vercel Step-by-Step)
 
-Yes! You can deploy this **Python Full Stack** application for free on **Render** (for Backend) and **Vercel** (for Frontend).
-
 ### Method A: Deploy Backend on Render + Frontend on Vercel (Recommended)
 
 #### Step 1: Deploy Python FastAPI Backend on Render
@@ -203,16 +229,15 @@ Yes! You can deploy this **Python Full Stack** application for free on **Render*
 3. Configure service settings:
    - **Name:** `job-agent-backend`
    - **Environment:** `Python 3`
-   - **Root Directory:** `backend`
-   - **Build Command:** `pip install -r requirements.txt && python -m app.seed`
-   - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - **Build Command:** `cd backend && pip install -r requirements.txt`
+   - **Start Command:** `cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 4. Add **Environment Variables** under *Advanced*:
    - `SECRET_KEY` = `your-secure-random-secret-key-32-chars`
-   - `FERNET_SECRET_KEY` = `yB14Y5c0Z57y5Kq_ZzU93B2F0Jp7W5xY1mZ6g5k4a2c=`
-   - `DATABASE_URL` = `sqlite:///./job_agent.db`
-   - `CORS_ORIGINS` = `["https://your-frontend.vercel.app"]`
-5. Click **Create Web Service**. Once deployed, copy your backend live URL:
-   `https://job-agent-backend.onrender.com`
+   - `FERNET_KEY` = `yB14Y5c0Z57y5Kq_ZzU93B2F0Jp7W5xY1mZ6g5k4a2c=`
+   - `FRONTEND_URL` = `https://job-automation-wvia.vercel.app`
+   - `LLM_PROVIDER` = `mock`
+5. Click **Create Web Service**. Live Backend API:
+   `https://job-automation-5-2txb.onrender.com`
 
 ---
 
@@ -223,19 +248,16 @@ Yes! You can deploy this **Python Full Stack** application for free on **Render*
    - **Root Directory:** Edit and select `frontend`
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
-3. Add **Environment Variable**:
-   - `VITE_API_BASE_URL` = `https://job-agent-backend.onrender.com/api/v1`
-4. Click **Deploy**. Vercel will automatically read `frontend/vercel.json` for single-page app routing.
-5. Your live app is now accessible at `https://your-project.vercel.app`!
+3. Click **Deploy**. Vercel will automatically read `frontend/src/api/client.ts` fallback URL pointing directly to the live Render backend `https://job-automation-5-2txb.onrender.com/api/v1`.
 
 ---
 
 ### Method B: 1-Click Deployment on Render (Blueprint)
 
-This repository includes a [render.yaml](file:///c:/Users/prasa/.gemini/antigravity-ide/scratch/job-automation-agent/render.yaml) file to automatically provision both Backend and Frontend on Render in 1 click:
+This repository includes a `render.yaml` file to automatically provision both Backend and Frontend on Render in 1 click:
 1. Go to **Render -> Blueprints**.
 2. Connect your GitHub repository.
-3. Render reads `render.yaml` and deploys both `job-agent-backend` and `job-agent-frontend` automatically!
+3. Render reads `render.yaml` and deploys both backend and frontend services automatically!
 
 ---
 
@@ -265,7 +287,7 @@ When an application encounters portal screening questions, the `application_engi
 
 ### Q4: How are candidate portal credentials secured in storage?
 **Answer:**
-Credentials stored for automated portal logins are symmetrically encrypted using Fernet cryptography (`cryptography.fernet.Fernet`). The encryption key is stored in environment variables (`FERNET_SECRET_KEY`) and never logged or exposed via API endpoints. API responses return masked strings (e.g. `pr****@gmail.com`).
+Credentials stored for automated portal logins are symmetrically encrypted using Fernet cryptography (`cryptography.fernet.Fernet`). The encryption key is stored in environment variables (`FERNET_KEY`) and never logged or exposed via API endpoints. API responses return masked strings (e.g. `pr****@gmail.com`).
 
 ### Q5: How is job relevance scoring computed for the Indian tech market?
 **Answer:**
