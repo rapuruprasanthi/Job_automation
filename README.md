@@ -35,6 +35,18 @@ This repository includes complete architecture specifications, implementation wo
 
 ---
 
+## 📌 Render Backend Link Configuration in Codebase
+
+The Render backend service URL (**`https://job-automation-5-2txb.onrender.com`**) is integrated into the codebase in the following locations:
+
+- **Frontend Client Binding** ([`frontend/src/api/client.ts`](file:///c:/Users/prasa/.gemini/antigravity-ide/scratch/job-automation-agent/frontend/src/api/client.ts#L3)): Set directly as the default fallback `API_BASE_URL` (`https://job-automation-5-2txb.onrender.com/api/v1`), enabling instant out-of-the-box frontend-backend communication.
+- **Backend CORS Authorization** ([`backend/app/main.py`](file:///c:/Users/prasa/.gemini/antigravity-ide/scratch/job-automation-agent/backend/app/main.py#L33)): Configured with `allow_origin_regex=r"https://.*\.vercel\.app"` to allow secure cross-origin requests from Vercel deployments.
+- **API Documentation & Health Monitors**:
+  - Swagger UI: [https://job-automation-5-2txb.onrender.com/docs](https://job-automation-5-2txb.onrender.com/docs)
+  - Health Endpoint: [https://job-automation-5-2txb.onrender.com/health](https://job-automation-5-2txb.onrender.com/health)
+
+---
+
 ## 📑 Table of Contents
 
 **Part 1: Python Full-Stack (FastAPI + React)**
